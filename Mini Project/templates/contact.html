@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact Us - FraudShield Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}" />
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="left-side">
+                <div class="address details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="topic">Address</div>
+                    <div class="text-one">Geethanjali College of Engineering and Technology</div>
+                    <div class="text-two">Cheeryal, Keesara, Telangana</div>
+                </div>
+                <div class="phone details">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="topic">Phone</div>
+                    <div class="text-one">98663 08271</div>
+                    <div class="text-two">95336 91618</div>
+                </div>
+                <div class="email details">
+                    <i class="fas fa-envelope"></i>
+                    <div class="topic">Email</div>
+                    <div class="text-one">fraudshieldanalytics@gmail.com</div>
+                    <div class="text-two">info.fraudshieldanalytics@gmail.com</div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="topic-text">CONTACT US</div>
+                <p>Need assistance? Reach out anytime. We’re here to support you and ensure you get the most from our services. Your satisfaction is our priority!</p>
+                <form id="contactForm">
+                    <div class="input-box">
+                        <input type="text" id="name" placeholder="Enter your name" required />
+                    </div>
+                    <div class="input-box">
+                        <input type="email" id="email" placeholder="Enter your email" required />
+                    </div>
+                    <div class="input-box message-box">
+                        <textarea id="message" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <div class="button">
+                        <input type="button" value="SEND" onclick="generateXML()" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      // Function to generate and download XML file
+      function generateXML() {
+        // Get form input values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !message) {
+          alert("All fields are required!");
+          return;
+        }
+
+        // Create XML structure
+        const xmlContent = `
+          <contact>
+            <name>${name}</name>
+            <email>${email}</email>
+            <message>${message}</message>
+          </contact>
+        `;
+
+        // Create a Blob with XML content
+        const blob = new Blob([xmlContent], { type: 'application/xml' });
+
+        // Create a download link for the Blob
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'contact_message.xml';
+
+        // Programmatically click the download link
+        link.click();
+
+        // Reset the form after downloading
+        document.getElementById('contactForm').reset();
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - FraudShield Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(1.jpg);
+            background-position: center;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .signup-container {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.8) 50%);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            width: 400px; /* Adjusted width */
+        }
+        .signup-container h2 {
+            color: #ff7200;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .signup-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ff7200;
+            border-radius: 5px;
+            background: transparent;
+            color: #fff;
+            width: calc(100% - 22px); /* Adjust width to fit inside container */
+            box-sizing: border-box; /* Include padding and border in the width */
+        }
+        .signup-container input[type="submit"] {
+            padding: 10px;
+            background-color: #ff7200;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: calc(100% - 22px); /* Adjust width to fit inside container */
+            box-sizing: border-box; /* Include padding and border in the width */
+        }
+        .signup-container input[type="submit"]:hover {
+            background-color: #fff;
+            color: #ff7200;
+        }
+        .signup-container .login-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .signup-container .login-link a {
+            color: #ff7200;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>SIGN UP</h2>
+        <form action="{{ url_for('signup') }}" method="post">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" required>
+
+            <input type="submit" value="Sign Up">
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="{{ url_for('home') }}">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>
